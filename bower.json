@@ -1,0 +1,25 @@
+{
+  "name": "BeelabJquerySfCollectionTable",
+  "version": "0.1.0",
+  "homepage": "https://github.com/Bee-Lab/BeelabJquerySfCollectionTable",
+  "authors": [
+    "BeeLab",
+    "Massimiliano Arione",
+    "Mauro D'Alatri"
+  ],
+  "description": "jQuery plugin for Symfony collection handling.",
+  "main": "sfCollectionTable.js",
+  "dependencies": {
+    "jquery": ">=1.5"
+  },
+  "keywords": [
+    "Symfony"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "*.md",
+    "*.txt",
+    "bower_components"
+  ]
+}

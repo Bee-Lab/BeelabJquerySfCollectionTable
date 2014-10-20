@@ -1,0 +1,39 @@
+{
+    "name": "sfCollectionTable",
+    "title": "jQuery Color",
+    "description": "jQuery plugin for Symfony collection handling.",
+    "keywords": [
+        "Symfony",
+        "collection"
+    ],
+    "version": "0.1.0",
+    "author": {
+        "name": "BeeLab",
+        "url": "https://bee-lab.net"
+    },
+    "maintainers": [
+        {
+            "name": "Massimiliano Arione",
+            "email": "massimiliano.arione@bee-lab.net",
+            "url": "https://github.com/garak"
+        },
+        {
+            "name": "Mauro D'Alatri",
+            "email": "mauro.dalatri@bee-lab.net",
+            "url": "https://github.com/maurodalatri"
+        },
+    ],
+    "licenses": [
+        {
+        "type": "MIT",
+        "url": "https://github.com/Bee-Lab/BeelabJquerySfCollectionTable/LICENSE.txt"
+        }
+    ],
+    "bugs": "https://github.com/Bee-Lab/BeelabJquerySfCollectionTable/issues",
+    "homepage": "https://github.com/Bee-Lab/BeelabJquerySfCollectionTable",
+    "docs": "https://github.com/Bee-Lab/BeelabJquerySfCollectionTable",
+    "download": "http://Bee-Lab/BeelabJquerySfCollectionTable",
+    "dependencies": {
+        "jquery": ">=1.5"
+    }
+}
