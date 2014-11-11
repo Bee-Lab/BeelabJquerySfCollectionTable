@@ -36,6 +36,24 @@ Here are default options, customize at will:
     addButtonClass:   "btn btn-success",
     addButtonContent: '<i class="fa fa-plus"></i> add',
     delButtonClass:   "btn btn-default remove",
-    delButtonContent: '<i class="fa fa-trash-o"></i>'
+    delButtonContent: '<i class="fa fa-trash-o"></i>',
+    excludeDelete:    null
+}
+```
+
+excludeDelete
+-------------
+
+This is a special option, that allow to exclude some rows from being deleted.
+You must define a function with ``$label`` as parameter, where ``$label`` is a jQuery instance
+of the label of a row. You can use it to discriminate rows you want to be deletable.
+
+Example:
+
+``` js
+function ($label) {
+    var aField = $label.parent('div').find('input[type="hidden"]').val();
+
+    return aField > 0;
 }
 ```

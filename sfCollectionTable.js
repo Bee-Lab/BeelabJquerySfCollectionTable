@@ -5,11 +5,13 @@
             addButtonClass:   "btn btn-success",
             addButtonContent: '<i class="fa fa-plus"></i> add',
             delButtonClass:   "btn btn-default remove",
-            delButtonContent: '<i class="fa fa-trash-o"></i>'
+            delButtonContent: '<i class="fa fa-trash-o"></i>',
+            excludeDelete:    null
         }, options), collection;
 
-        function addTagFormDeleteLink($label) {
+        function addTagFormDeleteLink($label, disabled) {
             var $removeFormA = $('<a class="' + settings.delButtonClass + '">' + settings.delButtonContent + '</a>');
+            $removeFormA.attr('disabled', disabled);
             $label.before($removeFormA);
             $removeFormA.on('click', function (e) {
                 e.preventDefault();
@@ -35,7 +37,7 @@
             $collectionHolder.find('div.form-group div div.form-group').each(function () {
                 moveUp($(this));
             });
-            $collectionHolder.find('div.form-group div').not('.form-group').remove();
+            $collectionHolder.find('div.form-group div').not('.form-group').hide();
         }
 
         for (collection in collections) {
@@ -45,7 +47,11 @@
             $collectionHolder.append($newLinkLi);
             $collectionHolder.data('index', $collectionHolder.find(':input').length);
             $collectionHolder.children('div.form-group').find('label:first').each(function () {
-                addTagFormDeleteLink($(this));
+                if (typeof settings.excludeDelete === 'function') {
+                    addTagFormDeleteLink($(this), settings.excludeDelete($(this)));
+                } else {
+                    addTagFormDeleteLink($(this), false);
+                }
             });
             var $labelRow = $('<div class="label-row">');
             $collectionHolder.find('div:first').before($labelRow);
@@ -57,7 +63,7 @@
             $collectionHolder.find('div.form-group div div.form-group').each(function () {
                 moveUp($(this));
             });
-            $collectionHolder.find('div.form-group div').not('.form-group').remove();
+            $collectionHolder.find('div.form-group div').not('.form-group').hide();
 
             $('a#add_tag_link_' + collection).on('click.coll_' + collection, function (e) {
                 e.preventDefault();
