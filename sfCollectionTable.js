@@ -67,7 +67,8 @@
 
             $('a#add_tag_link_' + collection).on('click.coll_' + collection, function (e) {
                 e.preventDefault();
-                addTagForm($(e.target));
+                var $target = e.target == this ? $(e.target) : $(e.target).parent('a');
+                addTagForm($target);
             });
         }
 
