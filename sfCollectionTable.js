@@ -6,7 +6,9 @@
             addButtonContent: '<i class="fa fa-plus"></i> add',
             delButtonClass:   "btn btn-default remove",
             delButtonContent: '<i class="fa fa-trash-o"></i>',
-            excludeDelete:    null
+            excludeDelete:    null,
+            activeSelect2: false,
+            select2CssClass: "s2"
         }, options), collection;
 
         function addTagFormDeleteLink($label, disabled) {
@@ -69,6 +71,10 @@
                 e.preventDefault();
                 var $target = e.target == this ? $(e.target) : $(e.target).parent('a');
                 addTagForm($target);
+                if(settings.activeSelect2)
+                {
+                    $("select." + settings.select2CssClass).select2();
+                }
             });
         }
 
