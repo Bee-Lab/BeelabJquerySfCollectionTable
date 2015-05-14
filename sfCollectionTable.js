@@ -71,8 +71,7 @@
                 e.preventDefault();
                 var $target = e.target == this ? $(e.target) : $(e.target).parent('a');
                 addTagForm($target);
-                if(settings.activeSelect2)
-                {
+                if (settings.activeSelect2) {
                     $("select." + settings.select2CssClass).select2();
                 }
             });
