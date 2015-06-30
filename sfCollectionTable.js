@@ -39,7 +39,7 @@
             $collectionHolder.find('div.form-group div div.form-group').each(function () {
                 moveUp($(this));
             });
-            $collectionHolder.find('div.form-group div').not('.form-group').hide();
+            $collectionHolder.find('div.form-group div').not('.form-group').not('.checkbox').hide();
         }
 
         for (collection in collections) {
@@ -65,7 +65,7 @@
             $collectionHolder.find('div.form-group div div.form-group').each(function () {
                 moveUp($(this));
             });
-            $collectionHolder.find('div.form-group div').not('.form-group').hide();
+            $collectionHolder.find('div.form-group div').not('.form-group').not('.checkbox').hide();
 
             $('a#add_tag_link_' + collection).on('click.coll_' + collection, function (e) {
                 e.preventDefault();
