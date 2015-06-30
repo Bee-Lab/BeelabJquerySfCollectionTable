@@ -59,7 +59,14 @@
             $collectionHolder.find('div:first').before($labelRow);
             $labelRow.append($('<label class="label-empty-cell">').text(''));
             $collectionHolder.find('div > div:first label').each(function () {
-                $(this).show().css('display', 'table-cell').appendTo($labelRow);
+                /* if label is for a checkbox, only "copy" label */
+                if ($(this).parent('div').hasClass('checkbox')) {
+                    var $cbLabel = $(this).clone();
+                    $cbLabel.find('input').remove();
+                    $cbLabel.css('display', 'table-cell').appendTo($labelRow);
+                } else {
+                    $(this).show().css('display', 'table-cell').appendTo($labelRow);
+                }
             });
 
             $collectionHolder.find('div.form-group div div.form-group').each(function () {
