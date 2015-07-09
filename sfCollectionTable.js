@@ -2,13 +2,14 @@
     "use strict";
     $.fn.sfCollectionTable = function (collections, options) {
         var settings = $.extend({
-            addButtonClass:   "btn btn-success",
+            addButtonClass:   'btn btn-success',
             addButtonContent: '<i class="fa fa-plus"></i> add',
-            delButtonClass:   "btn btn-default remove",
+            delButtonClass:   'btn btn-default remove',
             delButtonContent: '<i class="fa fa-trash-o"></i>',
             excludeDelete:    null,
-            activeSelect2: false,
-            select2CssClass: "s2"
+            activeSelect2:    false,
+            select2CssClass:  's2',
+            callback:         null
         }, options), collection;
 
         function addTagFormDeleteLink($label, disabled) {
@@ -80,6 +81,9 @@
                 addTagForm($target);
                 if (settings.activeSelect2) {
                     $("select." + settings.select2CssClass).select2();
+                }
+                if (settings.callback) {
+                    settings.callback();
                 }
             });
         }

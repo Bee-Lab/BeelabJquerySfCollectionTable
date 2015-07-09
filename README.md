@@ -33,11 +33,14 @@ Here are default options, customize at will:
 
 ``` js
 {
-    addButtonClass:   "btn btn-success",
+    addButtonClass:   'btn btn-success',
     addButtonContent: '<i class="fa fa-plus"></i> add',
-    delButtonClass:   "btn btn-default remove",
+    delButtonClass:   'btn btn-default remove',
     delButtonContent: '<i class="fa fa-trash-o"></i>',
-    excludeDelete:    null
+    excludeDelete:    null,
+    activeSelect2:    false,
+    select2CssClass:  's2',
+    callback:         null
 }
 ```
 
@@ -56,4 +59,41 @@ function ($label) {
 
     return aField > 0;
 }
+```
+
+Use with Select2
+----------------
+
+Setting ``activeSelect2`` to ``true``, you can active [Select2](http://select2.github.io/select2/)
+on your select. The default class is ``s2``, but you can customize it in the ``select2CssClass``
+option.
+
+Use a callback
+--------------
+
+If you need to call a function on the new content added by this plugin, just pass an anonymous
+function to ``callback`` option.
+
+This example will update the [Webshim polyfill](http://afarkas.github.io/webshim/demos/index.html):
+
+``` js
+$('body').sfCollectionTable(['myobject_mycollection'], {
+    callback: function () {
+        $('#myobject_mycollection').updatePolyfill();
+    }
+});
+```
+
+Styles
+------
+
+If you use default settings with Symfony (e.g. Bootstrap theme), you can use these styles:
+
+``` ccs
+div#myobject_mycollection { display: table; border-spacing: 5px; }
+div#myobject_mycollection > div.form-group, div.label-row { display: table-row; }
+div#myobject_mycollection .control-label { display: none; }
+div#myobject_mycollection div.form-group div.form-group, .label-empty-cell { display: table-cell; margin: 1px; }
+div#myobject_mycollection a.remove { display: table-cell; margin: 0 20px 10px 0; }
+div#myobject_mycollection .form-control { display: inherit }
 ```
