@@ -89,7 +89,7 @@ Styles
 
 If you use default settings with Symfony (e.g. Bootstrap theme), you can use these styles:
 
-``` ccs
+``` css
 div#myobject_mycollection { display: table; border-spacing: 5px; }
 div#myobject_mycollection > div.form-group, div.label-row { display: table-row; }
 div#myobject_mycollection .control-label { display: none; }
