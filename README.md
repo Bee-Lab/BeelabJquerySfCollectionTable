@@ -97,3 +97,51 @@ div#myobject_mycollection div.form-group div.form-group, .label-empty-cell { dis
 div#myobject_mycollection a.remove { display: table-cell; margin: 0 20px 10px 0; }
 div#myobject_mycollection .form-control { display: inherit }
 ```
+
+Advanced usage with embedded forms
+----------------------------------
+
+If the form composing your collection has an embedded form, you need some additional working.
+Suppose you have a form ``Team`` with a collection of ``Players``, with each ``Player`` object including a value object named ``Record``. Since you have a ``RecordType`` embedded in ``PlayerType``, you need to add Twig themes to your "new" and "edit" forms.
+Example for "new" form:
+
+``` twig
+{% extends 'layout.html.twig' %}
+
+{% form_theme form _self %}
+{% block _team_players_entry_widget %}
+    {{ form_row(form.record.field1) }}
+    {{ form_row(form.record.field2) }}
+    {{ form_row(form.record.field3) }}
+{% endblock %}
+
+{% block body %}
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+    {{ form_end(form) }}
+{% endblock %}
+```
+
+Example for "edit" form:
+
+``` twig
+{% extends 'layout.html.twig' %}
+
+{% form_theme form _self %}
+{% block _team_players_entry_row %}{# notice we are using row here, not widget #}
+    <div class="form-group">
+        <label class="control-label required">__name__label__</label>
+        <div>
+            {{ form_row(form.record.field1) }}
+            {{ form_row(form.record.field2) }}
+            {{ form_row(form.record.field3) }}
+        </div>
+    </div>
+{% endblock %}
+
+{% block body %}
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+    {{ form_end(form) }}
+{% endblock %}
+```
